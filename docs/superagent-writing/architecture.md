@@ -2,7 +2,7 @@
 
 日期：2026-11-05
 
-版本：v0.2
+版本：v0.3
 
 状态：用于修改和讨论，尚未批准为实现规格；不表示下述能力已经完成。
 
@@ -321,11 +321,11 @@ flowchart TD
 
 前三项指向本地写作工作区的记录，不随这个 GitHub 仓库发布；单独阅读仓库时，可先依据本文的已确认要求讨论。
 
-- [此前多会话实验与边界](../../../../../workbench/notes/superagent-writing-findings.md)
-- [多个全知会话的可行性与未实现项](../../../../../workbench/notes/superagent-multiple-hosts.md)
-- [原版和开发仓库的分工](../../../../../workbench/notes/superagent-repositories.md)
-- [原型架构说明](../../007-architecture.md)
-- [原型任务来源扩展说明](../../008-cookbook.md)
+- [此前多会话实验与边界](../../../../workbench/notes/superagent-writing-findings.md)
+- [多个全知会话的可行性与未实现项](../../../../workbench/notes/superagent-multiple-hosts.md)
+- [原版和开发仓库的分工](../../../../workbench/notes/superagent-repositories.md)
+- [原型架构说明](../007-architecture.md)
+- [原型任务来源扩展说明](../008-cookbook.md)
 - [Novelcrafter：设定随场景生效](https://www.novelcrafter.com/help/docs/codex/progressions-additions)
 - [LangGraph：持久化](https://docs.langchain.com/oss/javascript/langgraph/persistence)
 - [ink：分支叙事引擎](https://www.inklestudios.com/ink/)
@@ -336,3 +336,4 @@ flowchart TD
 | --- | --- | --- |
 | v0.1 | 2026-11-05 | 根据用户总结建立可编辑的架构讨论稿；明确汇总会话只收集、整理、归档下层输出，正式稿件由项目指定的写作职责处理。 |
 | v0.2 | 2026-11-05 | 根据用户修订，明确写作 Agent 保留通用 Agent 能力，向量搜索只是 MCP 扩展之一，不再单列为核心要求；会话级工具允许／禁用规则保留为待讨论想法，与已确认的文档权限隔离分开。 |
+| v0.3 | 2026-11-05 | 文档迁入项目专用目录 `docs/superagent-writing/`，更新引用；根 README 改为本项目入口，继承原型文档与目标设计分开说明。架构决定不变。 |

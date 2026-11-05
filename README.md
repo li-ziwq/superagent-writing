@@ -1,39 +1,42 @@
-# dsh-superagent
+# Superagent Writing
 
-> **Research prototype for reference only, not an official DeepSeek product.** This code grew out of our team's day-to-day development work, with much of the engineering done by coding agents. Treat it as research code, not production-ready software. It may still contain bugs, and its coding style and engineering practices may be inconsistent. Review and adapt it before using it in your own environment.
->
-> We have adapted it for publication, so it is not identical to our internal version or the implementation described in *Exploring Super-agent Design: Towards a More Autonomous Agent System*. Some designs discussed in the article are directions for future development and are not implemented in this prototype.
+面向写作的多会话 Agent 项目，基于 [DeepSeek Harness Super-agent 研究原型](https://github.com/deepseek-ai/dsh-superagent-prototype) 独立发展。
 
-dsh-superagent is a proactive coding agent for one GitHub repository, packaged as a bundle for [DeepSeek Harness](https://www.deepseek.com/en/harness/). It listens to GitHub and, optionally, Feishu. When someone allowed asks the agent for work, it opens a work item, works on it in its own agent session and directory, and answers in the original conversation, for example with a pull request. A web panel shows what needs a person.
+作者与导演会话共同讨论故事、生成和修订大纲，再将任务和不同资料分配给持续工作的会话。每轮结束，由汇总会话整理下层输出、保留引用并归档，供上层阅读。工作会话的职责由项目安排，可以是人物演绎、线索策划、正文写作或审校。
 
-It is also a way of working with an agent: **take as little human attention as possible, and give as much value as possible.** An agent that can act for a whole team can also waste a whole team's attention, so it acts only when asked or when a rule the team wrote allows it, and speaks only when someone must act or can use a result. [docs/000-philosophy.md](docs/000-philosophy.md) explains the principle and what it asks of the operator.
+## 当前状态
 
-## Setup
+目前处于架构讨论阶段，写作协作功能尚未实现。仓库代码仍沿用上游的 GitHub／飞书开发协作流程，不能将其现有界面或安装结果视为已经可用的写作系统。
 
-Setup has many steps, so an agent does it with you. Ask your coding agent:
+先阅读 [写作架构讨论稿](docs/superagent-writing/architecture.md)，其中区分了已确认要求、设计建议和待讨论事项。后续实现路线仍需讨论确定。
 
-> Read SETUP.md in this repository and set up dsh-superagent with me.
+## 设计方向
 
-It asks one short question at a time, shows the full plan once, and then installs and configures everything. [SETUP.md](SETUP.md) is what it follows.
+- 以本地 DSH 为主要使用环境，写作协作不要求创建 GitHub Issue 或 PR。
+- 作者与导演可读取完整项目故事资料；工作会话按权限读取文档和记忆。
+- 同时支持自由推演与按大纲写作，允许在创作过程中不断修订大纲。
+- 汇总会话只整理和归档；正式稿件由项目指定的写手处理。
+- 保留通用 Agent 能力，支持模型配置及 MCP 等工具扩展。会话级工具限制仍属待讨论事项。
 
-## Documentation
+## 文档
 
-Read the numbered documents in order; each builds only on the ones before it.
+- [写作架构讨论稿](docs/superagent-writing/architecture.md)：当前主要讨论入口。
+- [文档目录](docs/README.md)：本项目文档与继承原型资料的区分。
+- [原型安装说明](SETUP.md)：仅适用于现有上游开发协作流程，不是写作系统的安装指南。
 
-- [000 Philosophy](docs/000-philosophy.md)
-- [001 Domain model](docs/001-domain.md)
-- [002 Authorization](docs/002-authorization.md)
-- [003 Execution](docs/003-execution.md)
-- [004 Prompts](docs/004-prompts.md)
-- [005 Panel](docs/005-panel.md)
-- [006 Deployment](docs/006-deployment.md): manual setup, configuration, upgrades and troubleshooting
-- [007 Architecture](docs/007-architecture.md)
-- [008 Cookbook](docs/008-cookbook.md): adding a Source
+项目自身的设计、实现说明和使用文档统一放在 `docs/superagent-writing/`。文档目录按项目需要组织，不依赖某个 Agent 技能的名称。
 
-## Development
+## 开发
 
-`pnpm check` runs the typecheck, the tests and the build.
+沿用当前代码的依赖与检查命令：
 
-## License
+```sh
+pnpm install
+pnpm check
+```
 
-[MIT](LICENSE)
+`pnpm check` 依次执行类型检查、测试和构建。这些检查验证现有原型代码，不代表写作架构已经实现或验收。
+
+## 来源与许可
+
+本项目 fork 自 DeepSeek Harness Team 的研究原型，是独立衍生项目，并非 DeepSeek 官方写作产品。继承代码的版权与 [MIT 许可证](LICENSE) 保留。上游研究原型本身也不代表其文章中讨论的所有设计均已实现。
